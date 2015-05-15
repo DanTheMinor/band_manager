@@ -1,4 +1,9 @@
 # Band Manager
+This app is designed for a band manager to create venues and bands in a database. The bands can be updated and deleted as needed. Each band can be assigned venues and these venues will be displayed whenever the band's page is visited.
+
+Author: Daniel Minor (github user: DanTheMinor)
+known bugs:
+--
 
 #Rake instructions
 rake db:create
@@ -7,11 +12,6 @@ rake db:create_migration NAME=create_table_bands
 rake db:create_migration NAME=create_table_bands_venues
 rake db:migrate
 rake db:test:prepare
-
-
-Author: Daniel Minor (github user: DanTheMinor)
-known bugs:
---
 
 ruby version: 2.2.0
 

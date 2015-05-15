@@ -18,8 +18,12 @@ end
 
 post '/venues' do
   description = params.fetch('description')
-  Venue.create(description: description)
-  @success_message = 'New Venue Added!'
+  venue = Venue.new(description: description)
+  if venue.save()
+    @success_message = 'New Venue Added!'
+  else
+    @success_message = 'Failed to add venue'
+  end
   erb :venues
 end
 
@@ -36,5 +40,30 @@ end
 
 get '/bands/:id' do
   @band = Band.find(params.fetch('id').to_i)
+  @all_venues = Venue.all()
+  erb :band
+end
+
+patch '/bands/:id' do
+  new_name = params.fetch('band_new_name')
+  @band = Band.find(params.fetch('id').to_i)
+  @band.update(name: new_name)
+  redirect '/bands'
+end
+
+delete '/bands/:id' do
+  @band = Band.find(params.fetch('id').to_i)
+  @band.delete()
+  redirect '/bands'
+end
+
+patch '/bands/:id/assign_venue' do
+  @band = Band.find(params.fetch('id').to_i)
+  @all_venues = Venue.all()
+  venue_ids = params.fetch("venue_ids", [])
+  @band.venues.each do |venue|
+    venue_ids.push(venue.id)
+  end
+  @band.update(venue_ids: venue_ids)
   erb :band
 end

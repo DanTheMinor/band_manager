@@ -10,3 +10,19 @@
 <% else %>
   <h3>There are currently no venues assigned to this band!</h3>
 <% end %>
+<br>
+<h3>Assign venues to this band: </h3>
+<form action="/bands/<%=@band.id() %>/assign_venue" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <% @all_venues.each do |venue| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="venue_ids[]" value="<%= venue.id()%>"><%= venue.description()%>
+      </label>
+    </div>
+  <% end %>
+<button type="submit">Assign venues</button>
+<br>
+<a href="/bands">Return to all bands</a>
+<br>
+<a href="/">Return Home</a>

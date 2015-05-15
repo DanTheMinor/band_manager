@@ -5,7 +5,7 @@ class Band < ActiveRecord::Base
   validates(:name, :presence => true)
 
 private
-    define_method(:capitalize_name) do
-      name.capitalize!()
-    end
+  define_method(:capitalize_name) do
+    name.capitalize!()
+  end
 end

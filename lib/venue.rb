@@ -5,7 +5,7 @@ class Venue < ActiveRecord::Base
   validates(:description, :presence => true)
 
 private
-    define_method(:capitalize_description) do
-      description.capitalize!()
-    end
+  define_method(:capitalize_description) do
+    description.capitalize!()
+  end
 end

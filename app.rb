@@ -5,8 +5,22 @@ require('sinatra/reloader')
 also_reload('lib/**/*.rb')
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+
+
 get '/' do
   erb :index
+end
+
+get '/venues' do
+  @success_message = ''
+  erb :venues
+end
+
+post '/venues' do
+  description = params.fetch('description')
+  Venue.create(description: description)
+  @success_message = 'New Venue Added!'
+  erb :venues
 end
 
 get '/bands' do

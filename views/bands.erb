@@ -1,0 +1,19 @@
+<% if @bands.any? %>
+  <h2>Your list of bands:</h2>
+  <ul>
+      <% @bands.each do |band| %>
+      <li> <a href="bands/<%= band.id %>"><%= band.name %></a></li>
+      <% end %>
+  </ul>
+<% else %>
+  <h2>You currently have no bands to view!</h2>
+<% end %>
+
+<h3>Add a band to your list of bands!</h2>
+
+<form action="/bands" method="post">
+  <label for="name">Enter your band's name:</label>
+  <input id="name" name="name" type="text">
+  <br>
+  <button type="submit">Add Band</button>
+</form>

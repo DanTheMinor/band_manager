@@ -1,3 +1,6 @@
+#NOTICE FOR MIKE DURING CODE REVIEW
+For some reason I'm able to pass each of my individual rspec's (rspec spec/band_spec, rspec spec/integration_spec, etc,) but for some reason when I try doing an rspec on the full directory it fails. I think this is a problem with my spec helper or how I'm implementing it?
+
 # Band Manager
 This app is designed for a band manager to create venues and bands in a database. The bands can be updated and deleted as needed. Each band can be assigned venues and these venues will be displayed whenever the band's page is visited.
 
